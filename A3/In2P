@@ -1,0 +1,31 @@
+import acm.program.ConsoleProgram;
+
+/**
+ * In2P class: The main class which is responsible for all user interaction.
+ * 
+ *
+ */
+
+public class In2p extends ConsoleProgram {
+	/**
+	 * Run method: Print greeting and instructions.
+	 */
+
+	public void run() {
+
+		println("Infix to Postfix conversion, enter expression of blank line to exit.");
+		PostFix myPostFix = new PostFix();
+		while (true) {
+			String str = readLine("expr: ");// Read input.
+			if ("".equals(str)) {
+				// Check for break.
+				break;
+			}
+			Queue originalQueue = myPostFix.parse(str);// Call parse method.
+			Queue postFixQueue = myPostFix.In2Post(originalQueue);// Call In2Post method.
+			println(str + "==>" + postFixQueue.toString());
+		}
+		// Termination of program.
+		println("Program terminated.");
+	}
+}
